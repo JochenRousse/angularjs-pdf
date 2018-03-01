@@ -128,6 +128,7 @@ var NgPdf = exports.NgPdf = ["$window", "$document", "$log", function NgPdf($win
       var renderTask = null;
       var pdfLoaderTask = null;
       var debug = false;
+      var canvas = null;
       var url = scope.pdfUrl;
       var httpHeaders = scope.httpHeaders;
       var pdfDoc = null;
@@ -135,7 +136,12 @@ var NgPdf = exports.NgPdf = ["$window", "$document", "$log", function NgPdf($win
       var pageFit = attrs.scale === 'page-fit';
       var limitHeight = attrs.limitcanvasheight === '1';
       var scale = attrs.scale > 0 ? attrs.scale : 1;
-      var canvas = $document[0].createElement('canvas');
+
+      if (attrs.hasOwnProperty('canvasid')) {
+        canvas = $document[0].getElementById(attrs.canvasid);
+      } else {
+        canvas = $document[0].createElement('canvas');
+      }
       initCanvas(element, canvas);
       var creds = attrs.usecredentials;
       debug = attrs.hasOwnProperty('debug') ? attrs.debug : false;

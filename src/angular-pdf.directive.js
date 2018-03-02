@@ -87,8 +87,7 @@ export const NgPdf = ($window, $document, $log) => {
               pageWidthScale = Math.min(pageWidthScale, clientRect.height / viewport.height);
             }
             scale = pageWidthScale;
-            let input_scale = $document[0].getElementById('scale_value');
-            input_scale.value = scale;
+            scope.scale = scale;
           }
           viewport = page.getViewport(scale);
           setCanvasDimensions(canvas, viewport.width, viewport.height);

@@ -178,8 +178,7 @@ var NgPdf = exports.NgPdf = ["$window", "$document", "$log", function NgPdf($win
               pageWidthScale = Math.min(pageWidthScale, clientRect.height / viewport.height);
             }
             scale = pageWidthScale;
-            var input_scale = $document[0].getElementById('scale_value');
-            input_scale.value = scale;
+            scope.scale = scale;
           }
           viewport = page.getViewport(scale);
           setCanvasDimensions(canvas, viewport.width, viewport.height);

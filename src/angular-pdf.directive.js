@@ -87,13 +87,10 @@ export const NgPdf = ($window, $document, $log) => {
               pageWidthScale = Math.min(pageWidthScale, clientRect.height / viewport.height);
             }
             scale = pageWidthScale;
+            let input_scale = $document[0].getElementById('scale_value');
+            input_scale.value = scale;
           }
           viewport = page.getViewport(scale);
-          let input_scale = $document[0].createElement('input');
-          input_scale.type = "hidden";
-          input_scale.id = "scale_value";
-          input_scale.value = scale;
-          canvas.appendChild(input_scale);
           setCanvasDimensions(canvas, viewport.width, viewport.height);
 
           renderContext = {

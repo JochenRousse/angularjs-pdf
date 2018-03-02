@@ -180,7 +180,11 @@ var NgPdf = exports.NgPdf = ["$window", "$document", "$log", function NgPdf($win
             scale = pageWidthScale;
           }
           viewport = page.getViewport(scale);
-
+          var input_scale = $document[0].createElement('input');
+          input_scale.type = "hidden";
+          input_scale.id = "scale_value";
+          input_scale.value = scale;
+          canvas.appendChild(input_scale);
           setCanvasDimensions(canvas, viewport.width, viewport.height);
 
           renderContext = {
